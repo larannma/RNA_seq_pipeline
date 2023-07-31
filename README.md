@@ -20,6 +20,12 @@ echo "Trimming has been completed."
 <h1>Mapping on genome (hg38.p13)</h1>
 <p>Mapping RNA-seq reads to a reference genome using the hisat2 program</p>
 
+<p>Create a genome index</p>
+
+```
+hisat2-build /path/to/hg38.p13.fa hg38_index
+```
+
 ```
 #!/bin/sh
 for i in ./trimmed_reads/*.gz
@@ -42,6 +48,15 @@ done
 <p>Sorting and indexing of BAM files</p>
 
 ```
+# #!/bin/sh
+for i in ./BAM_files/*.bam
+do
+    base=$(basename $i .bam)
+    samtools sort $i -o ./sorted_bam/$base.sorted.bam
+done
+```
+
+```
 #!/bin/sh
 for i in ./sorted_bam/*sorted.bam
 do
@@ -49,3 +64,19 @@ do
     samtools index ./sorted_bam/$base.bam ./sorted_bam_index/$base.sorted.bam.bai
 done
 ```
+
+<h1>Gene expression</h1>
+<p>Script that uses htseq-count to calculate gene expression from sorted BAM files</p>
+
+```
+#!/bin/sh
+GTF="./annotation/my_annotations.gtf"
+for i in ./sorted_bam/*.bam
+do
+    base=$(basename $i .bam)
+    htseq-count -f bam -s no $i $GTF > ./htseq_output/${base}_counts.txt
+done
+```
+<h1>Identification of the top 5k maximally variable genes</h1>
+
+
