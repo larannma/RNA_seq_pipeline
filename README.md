@@ -1,7 +1,7 @@
 # RNA_seq_pipeline
 
 Download data from [NCBI](https://www.ncbi.nlm.nih.gov/sra)
-[Presentation](https://docs.google.com/presentation/d/1NR97b0Y6AMtWCuncW1QIQBa5SIeePwFtloGDQU6ccQM/edit?usp=sharing)
+<h1>[Presentation](https://docs.google.com/presentation/d/1NR97b0Y6AMtWCuncW1QIQBa5SIeePwFtloGDQU6ccQM/edit?usp=sharing)</h1>
 
 <h1>Trimming</h1>
 <p>Following script will trim and remove adapters for each of the files and save the result in a new folder.</p>
