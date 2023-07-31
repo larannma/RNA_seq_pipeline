@@ -2,9 +2,8 @@
 
 Downloading data from [NCBI](https://www.ncbi.nlm.nih.gov/sra)
 
- <h1>Trimming</h1>
+<h1>Trimming</h1>
 ```bash
-#!/bin/bash
 for file in *.fastq.gz
 do
     echo "Trimming ${file}"
